@@ -1,0 +1,42 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+KDIR	Makefile	/^KDIR := \/lib\/modules\/`uname -r`\/build$/;"	m
+PWD	Makefile	/^PWD := $(shell pwd)$/;"	m
+obj-m	Makefile	/^obj-m := mem_driver.o$/;"	m
+Vul_devices	Poc.c	/^char *Vul_devices[3] = {$/;"	v
+get_kernel_addr	Poc.c	/^int get_kernel_addr(unsigned int *kernel_addr){$/;"	f
+main	Poc.c	/^int main(){$/;"	f
+poc	Poc.c	/^int poc()$/;"	f
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+MEMDEV_MAJOR	mem_driver.c	/^#define MEMDEV_MAJOR /;"	d	file:
+MEMDEV_NR_DEVS	mem_driver.c	/^#define MEMDEV_NR_DEVS /;"	d	file:
+MEMDEV_SIZE	mem_driver.c	/^#define MEMDEV_SIZE /;"	d	file:
+cdev	mem_driver.c	/^static struct cdev cdev; $/;"	v	typeref:struct:cdev	file:
+data	mem_driver.c	/^	char *data;$/;"	m	struct:mem_dev	file:
+dev_class	mem_driver.c	/^static struct class *dev_class = NULL;$/;"	v	typeref:struct:class	file:
+dev_device	mem_driver.c	/^static struct device *dev_device[MEMDEV_NR_DEVS];$/;"	v	typeref:struct:device	file:
+devno	mem_driver.c	/^static dev_t devno;   \/\/设备编号， 内部表达$/;"	v	file:
+idx	mem_driver.c	/^	uint32_t idx;$/;"	m	struct:mem_init	file:
+len	mem_driver.c	/^	uint32_t len;$/;"	m	struct:mem_init	file:
+mem_dev	mem_driver.c	/^struct mem_dev$/;"	s	file:
+mem_devp	mem_driver.c	/^static struct mem_dev *mem_devp;$/;"	v	typeref:struct:mem_dev	file:
+mem_fops	mem_driver.c	/^static const struct file_operations mem_fops =$/;"	v	typeref:struct:file_operations	file:
+mem_init	mem_driver.c	/^struct mem_init {$/;"	s	file:
+mem_ioctl	mem_driver.c	/^static long mem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f	file:
+mem_major	mem_driver.c	/^static uint32_t mem_major = MEMDEV_MAJOR;   \/\/ 主设备号$/;"	v	file:
+mem_minor	mem_driver.c	/^static uint32_t mem_minor = 0;				\/\/ 次设备号$/;"	v	file:
+mem_open	mem_driver.c	/^int mem_open(struct inode *inode, struct file *filp)$/;"	f
+mem_read	mem_driver.c	/^static ssize_t mem_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+mem_release	mem_driver.c	/^int mem_release(struct inode *inode, struct file *filp)$/;"	f
+mem_write	mem_driver.c	/^static ssize_t mem_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:
+memdev_exit	mem_driver.c	/^module_exit(memdev_exit);$/;"	v
+memdev_exit	mem_driver.c	/^static void __exit memdev_exit(void)$/;"	f	file:
+memdev_init	mem_driver.c	/^module_init(memdev_init);$/;"	v
+memdev_init	mem_driver.c	/^static int __init memdev_init(void)$/;"	f	file:
+size	mem_driver.c	/^	unsigned long size;$/;"	m	struct:mem_dev	file:
+__this_module	mem_driver.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__used	mem_driver.mod.c	/^__used$/;"	v	file:
+__used	mem_driver.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
